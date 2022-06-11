@@ -1,4 +1,6 @@
 #include "stack_queue.h"
+#include <iostream>
+using namespace std;
 
 template <class T>
 Stack<T>::Stack() {
@@ -8,14 +10,12 @@ Stack<T>::Stack() {
 
 template <class T>
 Stack<T>::~Stack() {
-    while(!this->empty()) {
-        this->pop();
-    }
+    this->clear();
 }
 
 template <class T>
 void Stack<T>::push(T data) {
-    typename iSLL<T>::Node *newNode = new typename iSLL<T>::Node(data, this->head);
+    Node<T> *newNode = new Node<T>(data, this->head);
     this->head = newNode;
     this->count++; 
 }
@@ -23,8 +23,8 @@ void Stack<T>::push(T data) {
 template <class T>
 T Stack<T>::top() {
     if(this->empty()) {
-        T *blank = new T();
-        return *blank;
+        cout << "Stack empty!";
+        return -1;
     }
     return this->head->data;
 }
@@ -32,12 +32,13 @@ T Stack<T>::top() {
 template <class T>
 T Stack<T>::pop() {
     if(this->empty()) {
-        T *blank = new T();
-        return *blank;
+        cout << "Stack empty!";
+        return -1;
     }
-    T temp = this->head->data;
+    Node<T> *current = this->head;
+    T temp = current->data;
     this->head = this->head->next;
-    free(this->head);
+    free(current);
     this->count--;
     return temp;
 }
@@ -49,3 +50,13 @@ bool Stack<T>::empty() {
     }
     return false;
 }
+
+template <class T>
+void Stack<T>::clear() {
+    while(!this->empty()) {
+        this->pop();
+    }
+    return;
+}
+
+template class Stack<int>;

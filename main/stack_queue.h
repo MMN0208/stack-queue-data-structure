@@ -1,31 +1,20 @@
 #ifndef STACK_QUEUE_H
 #define STACK_QUEUE_H
 
-#include <iostream>
-using namespace std;
+template <class T>
+class Node;
 
 template <class T>
 class iSLL {
-protected:
-    class Node;
-    Node *head;
-    int count;
-    class Node {
-        T data;
-        Node *next;
-        friend class SLL;
-    public:
-        Node() : next(NULL) {}
-        Node(T data) : data(data), next(NULL) {}
-        Node(T data, Node *next) : data(data), next(next) {}
-    };
 public:
-    iSLL();
-    ~iSLL();
     virtual void push(T data) = 0;
     virtual T pop() = 0;
     virtual T top() = 0;
     virtual bool empty() = 0;
+    virtual void clear() = 0;
+protected:
+    Node<T> *head;
+    int count;
 };
 
 template <class T>
@@ -37,6 +26,7 @@ public:
     T pop();
     T top();
     bool empty();
+    void clear();
 };
 
 template <class T>
@@ -48,6 +38,20 @@ public:
     T pop();
     T top();
     bool empty();
+    void clear();
+};
+
+template <class T>
+class Node {
+    T data;
+    Node *next;
+    friend class iSLL<T>;
+    friend class Stack<T>;
+    friend class Queue<T>;
+public:
+    Node() : next(0) {}
+    Node(T data) : data(data), next(0) {}
+    Node(T data, Node *next) : data(data), next(next) {}
 };
 
 #endif
