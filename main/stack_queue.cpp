@@ -14,8 +14,8 @@ Stack<T>::~Stack() {
 }
 
 template <class T>
-void Stack<T>::insert(T data) {
-    Node *newNode = new Node(data, this->head);
+void Stack<T>::push(T data) {
+    typename iSLL<T>::Node *newNode = new typename iSLL<T>::Node(data, this->head);
     this->head = newNode;
     this->count++; 
 }
@@ -26,7 +26,7 @@ T Stack<T>::top() {
         T *blank = new T();
         return *blank;
     }
-    return head->data;
+    return this->head->data;
 }
 
 template <class T>
@@ -35,16 +35,16 @@ T Stack<T>::pop() {
         T *blank = new T();
         return *blank;
     }
-    T temp = head->data;
-    head = head->next;
-    free(head);
-    count--;
+    T temp = this->head->data;
+    this->head = this->head->next;
+    free(this->head);
+    this->count--;
     return temp;
 }
 
 template <class T>
 bool Stack<T>::empty() {
-    if(!count) {
+    if(!this->count) {
         return true;
     }
     return false;
