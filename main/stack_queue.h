@@ -7,13 +7,16 @@ class Node;
 template <class T>
 class iSLL {
 public:
+    virtual ~iSLL() {}
     virtual void push(T data) = 0;
     virtual T pop() = 0;
     virtual T top() = 0;
+    virtual int size() = 0;
     virtual bool empty() = 0;
     virtual void clear() = 0;
 protected:
     Node<T> *head;
+    Node<T> *tail;
     int count;
 };
 
@@ -26,6 +29,7 @@ public:
     T pop();
     T top();
     bool empty();
+    int size();
     void clear();
 };
 
@@ -38,6 +42,7 @@ public:
     T pop();
     T top();
     bool empty();
+    int size();
     void clear();
 };
 
