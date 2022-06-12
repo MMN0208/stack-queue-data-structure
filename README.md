@@ -1,7 +1,7 @@
 # stack-queue-data-structure
 Stack and Queue Data Structures
 
-Stack and Queue implementation using linked list.
+Stack and Queue implementation using singly linked list interface.
 
 The following functions are available:
 
