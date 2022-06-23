@@ -14,36 +14,40 @@ public:
     virtual int size() = 0;
     virtual bool empty() = 0;
     virtual void clear() = 0;
-protected:
-    Node<T> *head;
-    Node<T> *tail;
-    int count;
 };
 
 template <class T>
 class Stack : public iSLL<T>{
+protected:
+    Node<T> *head;
+    Node<T> *tail;
+    int count;
 public:
     Stack();
     ~Stack();
-    void push(T data);
-    T pop();
-    T top();
-    bool empty();
-    int size();
-    void clear();
+    virtual void push(T data);
+    virtual T pop();
+    virtual T top();
+    virtual bool empty();
+    virtual int size();
+    virtual void clear();
 };
 
 template <class T>
 class Queue : public iSLL<T>{
+protected:
+    Node<T> *head;
+    Node<T> *tail;
+    int count;
 public:
     Queue();
     ~Queue();
-    void push(T data);
-    T pop();
-    T top();
-    bool empty();
-    int size();
-    void clear();
+    virtual void push(T data);
+    virtual T pop();
+    virtual T top();
+    virtual bool empty();
+    virtual int size();
+    virtual void clear();
 };
 
 template <class T>
